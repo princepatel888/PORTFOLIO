@@ -67,7 +67,7 @@
     }
     .side-menu a:hover { background: #f5f5f5; }
 
-    /* Overlay for closing menu */
+    /* Overlay */
     .overlay {
       display: none;
       position: fixed;
@@ -78,7 +78,7 @@
     }
     .overlay.active { display: block; }
 
-    /* Hero Section */
+    /* Hero */
     .hero {
       text-align: center;
       padding: 60px 20px;
@@ -132,28 +132,6 @@
     }
     .section-visible { opacity: 1 !important; transform: translateY(0) !important; }
 
-    .flavor-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-      gap: 20px;
-    }
-
-    .flavor-card {
-      background: #fff;
-      padding: 12px;
-      border-radius: 14px;
-      text-align: center;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-      transition: transform 0.3s;
-    }
-    .flavor-card:hover { transform: translateY(-5px); }
-    .flavor-card img, .flavor-card video {
-      width: 100%;
-      border-radius: 10px;
-      object-fit: cover;
-    }
-    .flavor-card h3 { margin-top: 10px; font-size: 1rem; font-weight: 600; }
-
     .section-title {
       text-align: center;
       font-size: 1.8rem;
@@ -162,46 +140,46 @@
       color: #2e3c2f;
     }
 
-    /* Shrikhand Carousel */
-    .carousel-container {
-      position: relative;
-      width: 100%;
-      max-width: 500px;
-      margin: auto;
-      perspective: 1000px;
-      height: 280px;
-    }
-    .carousel {
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      transform-style: preserve-3d;
-      animation: rotate 14s linear infinite;
-    }
-    .carousel img {
-      position: absolute;
-      width: 200px;
-      height: 200px;
-      object-fit: cover;
-      border-radius: 16px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-    }
-    .carousel img:nth-child(1) { transform: rotateY(0deg) translateZ(300px) rotateX(-8deg); }
-    .carousel img:nth-child(2) { transform: rotateY(120deg) translateZ(300px) rotateX(-8deg); }
-    .carousel img:nth-child(3) { transform: rotateY(240deg) translateZ(300px) rotateX(-8deg); }
-    @keyframes rotate { from { transform: rotateY(0deg); } to { transform: rotateY(360deg); } }
-
     /* Locations */
-    .locations iframe {
-      width: 100%;
-      height: 350px;
-      border: 0;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    .locations-grid {
+      display: grid;
+      gap: 25px;
+      grid-template-columns: 1fr;
     }
+    .location-card {
+      background: #fff;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+      transition: transform 0.3s;
+    }
+    .location-card:hover { transform: translateY(-5px); }
+    .location-map iframe {
+      width: 100%;
+      height: 250px;
+      border: 0;
+    }
+    .location-info {
+      padding: 15px;
+      text-align: center;
+    }
+    .location-info h3 {
+      font-size: 1.2rem;
+      margin-bottom: 8px;
+      color: #2e3c2f;
+    }
+    .location-info a {
+      display: inline-block;
+      margin-top: 8px;
+      padding: 8px 14px;
+      border-radius: 8px;
+      background: #8bbf87;
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+    .location-info a:hover { background: #6da96a; }
 
     footer {
       background-color: #2e3c2f;
@@ -215,6 +193,7 @@
     @media (min-width: 768px) {
       .btn-group { flex-direction: row; justify-content: center; }
       .btn { width: auto; }
+      .locations-grid { grid-template-columns: 1fr 1fr; }
       .hamburger { display: none; }
       .side-menu { display: none; }
     }
@@ -244,9 +223,9 @@
   <h2>Pure. Natural. Delicious.</h2>
   <p>Handcrafted ice cream made with love & nature’s finest ingredients.</p>
   <div class="btn-group">
-    <a href="#" class="btn swiggy"><i class="fa-brands fa-swiggy"></i> Order on Swiggy</a>
+    <a href="https://www.swiggy.com" target="_blank" class="btn swiggy"><i class="fa-brands fa-swiggy"></i> Order on Swiggy</a>
     <a href="#flavors" class="btn"><i class="fa-solid fa-ice-cream"></i> Explore Flavors</a>
-    <a href="#" class="btn zomato"><i class="fa-brands fa-zomato"></i> Order on Zomato</a>
+    <a href="https://www.zomato.com" target="_blank" class="btn zomato"><i class="fa-brands fa-zomato"></i> Order on Zomato</a>
   </div>
 </section>
 
@@ -276,9 +255,28 @@
 
 <section id="locations" class="locations">
   <h2 class="section-title">Find Us in Gujarat</h2>
-  <p style="text-align:center; margin-bottom:20px;">Visit our branches across Gujarat for a delightful scoop of nature.</p>
-  <!-- Example Map Embed (replace with your own Google Maps link) -->
-  <iframe src="https://www.google.com/maps/d/embed?mid=1xQm7iT6y9U3NokUZs6l99h1yWZz1Gws&hl=en" allowfullscreen></iframe>
+  <div class="locations-grid">
+    <!-- Main Branch -->
+    <div class="location-card">
+      <div class="location-map">
+        <iframe src="https://www.google.com/maps?q=21.170240,72.831062&z=15&output=embed"></iframe>
+      </div>
+      <div class="location-info">
+        <h3>Main Branch - Surat</h3>
+        <a href="https://maps.app.goo.gl/rnw11rxGP6TG83KHA" target="_blank"><i class="fa-solid fa-map-marker-alt"></i> View on Maps</a>
+      </div>
+    </div>
+    <!-- Bardoli Branch -->
+    <div class="location-card">
+      <div class="location-map">
+        <iframe src="https://www.google.com/maps?q=21.122669,73.111411&z=15&output=embed"></iframe>
+      </div>
+      <div class="location-info">
+        <h3>Bardoli Branch</h3>
+        <a href="https://maps.app.goo.gl/w8gjqjuNEZFhcjoC7" target="_blank"><i class="fa-solid fa-map-marker-alt"></i> View on Maps</a>
+      </div>
+    </div>
+  </div>
 </section>
 
 <footer id="contact">
